@@ -18,3 +18,7 @@ Minimun SDK : API 21 - Android 5.0 (Lollipop)
 # Application Version  
 minSdkVersion : 21  
 targetSdkVersion : 32  
+
+# git branch
+기준 시작 : 22.11.02  
+![git_graph](https://user-images.githubusercontent.com/62231651/199483313-d9ad594d-b8d6-4fea-b05f-7f0bac0cada9.png)  
