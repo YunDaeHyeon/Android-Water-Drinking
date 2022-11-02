@@ -3,12 +3,14 @@ package com.capstone.waterdrinking.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     // 새로고침, 초기화 버튼 & 물 무게에 따른 이모티콘 & 텀블러
     private ImageView refreshButton, recycleButton, weightFace, bottleImage;
     private TextView weightTextView, drinkingTextView; // 물의 무게, 마신 물의 무게가 출력되는 텍스트 뷰
+    private Button moveAlarmActivity;
     private int waterWeight = 1000; // 더미데이터 (1000mL)
     private int drinkingWater = 0; // 더미데이터  (0mL)
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         recycleButton = (ImageView) findViewById(R.id.recycleButton);
         weightTextView = (TextView) findViewById(R.id.weightTextView);
         drinkingTextView = (TextView) findViewById(R.id.drinkingTextView);
+        moveAlarmActivity = (Button) findViewById(R.id.moveAlarmActivity);
 
         // Preferences 선언 (MODE_PRIVATE = 읽기 쓰기)
         SharedPreferences pref = getSharedPreferences("water", Activity.MODE_PRIVATE);
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             changeImage(drinkingWater);
         }
 
-        // 새로고침 버튼 클릭 시 360도 회전
+        // 새로고침 버튼
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
                 drinkingTextView.setText("지금까지 마신 물의 양 : "+drinkingWater+"mL");
                 // 이모티콘, 텀블러 다시 그리기
                 changeImage(drinkingWater);
+            }
+        });
+
+        // 알람 설정
+        moveAlarmActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AlarmActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
