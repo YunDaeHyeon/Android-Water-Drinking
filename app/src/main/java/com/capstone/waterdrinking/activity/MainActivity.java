@@ -1,8 +1,10 @@
-package com.capstone.waterdrinking;
+package com.capstone.waterdrinking.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.capstone.waterdrinking.R;
 
 public class MainActivity extends AppCompatActivity {
 
